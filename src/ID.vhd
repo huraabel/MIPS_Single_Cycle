@@ -15,15 +15,14 @@ entity ID is
         RegDst : in std_logic;
         ExtOp : in std_logic;
         
-        WA : in std_logic_vector(2 downto 0);
+        
         WD : in std_logic_vector(15 downto 0);
         
         RD1: out std_logic_vector(15 downto 0);
         RD2: out std_logic_vector(15 downto 0);
         Ext_Imm : out std_logic_vector(15 downto 0);
         func : out std_logic_vector(2 downto 0);
-        sa : out std_logic ;
-        Pass_writeAdress : out std_logic_vector(2 downto 0)
+        sa : out std_logic 
    
     );
 end ID;
@@ -57,9 +56,9 @@ begin
         end case;
     end process;
     
-    Pass_writeAdress <= WriteAddress;
     
-    RF1:  Registru port map (CLK, Instr(12 downto 10), Instr(9 downto 7),WA,
+    
+    RF1:  Registru port map (CLK, Instr(12 downto 10), Instr(9 downto 7),WriteAddress,
           WD,en, RegWrite, RD1, RD2);  
     
     func <= Instr(2 downto 0);
